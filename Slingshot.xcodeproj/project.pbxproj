@@ -14,6 +14,7 @@
 		6FCC235520E2ED57005830A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FCC235320E2ED57005830A3 /* Main.storyboard */; };
 		6FCC235720E2ED59005830A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FCC235620E2ED59005830A3 /* Assets.xcassets */; };
 		6FCC235A20E2ED59005830A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FCC235820E2ED59005830A3 /* LaunchScreen.storyboard */; };
+		6FCC236220E2F140005830A3 /* SlingshotTileSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6FCC236120E2F140005830A3 /* SlingshotTileSet.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		6FCC235620E2ED59005830A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6FCC235920E2ED59005830A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6FCC235B20E2ED59005830A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6FCC236120E2F140005830A3 /* SlingshotTileSet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SlingshotTileSet.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				6FCC235620E2ED59005830A3 /* Assets.xcassets */,
 				6FCC235820E2ED59005830A3 /* LaunchScreen.storyboard */,
 				6FCC235B20E2ED59005830A3 /* Info.plist */,
+				6FCC236120E2F140005830A3 /* SlingshotTileSet.sks */,
 			);
 			path = Slingshot;
 			sourceTree = "<group>";
@@ -132,6 +135,7 @@
 				6FCC234C20E2ED57005830A3 /* GameScene.sks in Resources */,
 				6FCC235720E2ED59005830A3 /* Assets.xcassets in Resources */,
 				6FCC235A20E2ED59005830A3 /* LaunchScreen.storyboard in Resources */,
+				6FCC236220E2F140005830A3 /* SlingshotTileSet.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
