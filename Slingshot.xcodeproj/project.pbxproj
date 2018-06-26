@@ -60,17 +60,57 @@
 		6FCC234820E2ED57005830A3 /* Slingshot */ = {
 			isa = PBXGroup;
 			children = (
+				6FCC236820E2F5B9005830A3 /* TileSets */,
+				6FCC236720E2F58A005830A3 /* UI */,
+				6FCC236620E2F56C005830A3 /* Scenes */,
+				6FCC236520E2F566005830A3 /* ViewController */,
+				6FCC236420E2F560005830A3 /* Template */,
+			);
+			path = Slingshot;
+			sourceTree = "<group>";
+		};
+		6FCC236420E2F560005830A3 /* Template */ = {
+			isa = PBXGroup;
+			children = (
 				6FCC234920E2ED57005830A3 /* AppDelegate.swift */,
+				6FCC235B20E2ED59005830A3 /* Info.plist */,
+			);
+			path = Template;
+			sourceTree = "<group>";
+		};
+		6FCC236520E2F566005830A3 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6FCC235120E2ED57005830A3 /* GameViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		6FCC236620E2F56C005830A3 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
 				6FCC234B20E2ED57005830A3 /* GameScene.sks */,
 				6FCC234F20E2ED57005830A3 /* GameScene.swift */,
-				6FCC235120E2ED57005830A3 /* GameViewController.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		6FCC236720E2F58A005830A3 /* UI */ = {
+			isa = PBXGroup;
+			children = (
 				6FCC235320E2ED57005830A3 /* Main.storyboard */,
 				6FCC235620E2ED59005830A3 /* Assets.xcassets */,
 				6FCC235820E2ED59005830A3 /* LaunchScreen.storyboard */,
-				6FCC235B20E2ED59005830A3 /* Info.plist */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		6FCC236820E2F5B9005830A3 /* TileSets */ = {
+			isa = PBXGroup;
+			children = (
 				6FCC236120E2F140005830A3 /* SlingshotTileSet.sks */,
 			);
-			path = Slingshot;
+			path = TileSets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
