@@ -64,6 +64,7 @@
 				6FCC236720E2F58A005830A3 /* UI */,
 				6FCC236620E2F56C005830A3 /* Scenes */,
 				6FCC236520E2F566005830A3 /* ViewController */,
+				6FCC235B20E2ED59005830A3 /* Info.plist */,
 				6FCC236420E2F560005830A3 /* Template */,
 			);
 			path = Slingshot;
@@ -73,7 +74,6 @@
 			isa = PBXGroup;
 			children = (
 				6FCC234920E2ED57005830A3 /* AppDelegate.swift */,
-				6FCC235B20E2ED59005830A3 /* Info.plist */,
 			);
 			path = Template;
 			sourceTree = "<group>";
