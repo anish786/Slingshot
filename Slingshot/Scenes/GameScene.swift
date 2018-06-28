@@ -35,7 +35,7 @@ class GameScene: SKScene {
     func setupLevel() {
         if let mapNode = childNode(withName: "Tile Map Node") as? SKTileMapNode {
             self.mapNode = mapNode
-            maxScale = mapNode.mapSize.height/frame.size.height
+            maxScale = mapNode.mapSize.width/frame.size.width
         }
         
         addCamera()
@@ -71,8 +71,8 @@ extension GameScene {
                 }
                 
                 let locationAfterScale = convertPoint(fromView: locationInView)
-                let locationDelta = CGPoint(x: location.x - locationAfterScale.x, y: location.y - locationAfterScale.y)
-                let newPosition = CGPoint(x: gameCamera.position.x + locationDelta.x, y: gameCamera.position.y + locationDelta.y)
+                let locationDelta = location - locationAfterScale
+                let newPosition = gameCamera.position + locationDelta
                 gameCamera.position = newPosition
                 sender.scale = 1.0
                 gameCamera.setConstraints(with: self, and: mapNode.frame, to: nil)
