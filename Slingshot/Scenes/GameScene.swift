@@ -16,6 +16,7 @@ class GameScene: SKScene {
     let gameCamera = GameCamera()
     var panRecognizer = UIPanGestureRecognizer()
     var pinchRecognizer = UIPinchGestureRecognizer()
+    var maxScale: CGFloat = 0
     
     override func didMove(to view: SKView) {
         setupLevel()
@@ -34,6 +35,7 @@ class GameScene: SKScene {
     func setupLevel() {
         if let mapNode = childNode(withName: "Tile Map Node") as? SKTileMapNode {
             self.mapNode = mapNode
+            maxScale = mapNode.mapSize.height/frame.size.height
         }
         
         addCamera()
@@ -51,7 +53,7 @@ class GameScene: SKScene {
 extension GameScene {
     @objc func pan(sender: UIPanGestureRecognizer) {
         guard let view = view else { return }
-        let translation = sender.translation(in: view)
+        let translation = sender.translation(in: view) * gameCamera.yScale
         gameCamera.position = CGPoint(x: gameCamera.position.x - translation.x, y: gameCamera.position.y + translation.y)
         sender.setTranslation(CGPoint.zero, in: view)
     }
@@ -64,7 +66,9 @@ extension GameScene {
             if sender.state == .changed {
                 let convertedScale = 1/sender.scale
                 let newScale = gameCamera.yScale*convertedScale
-                gameCamera.setScale(newScale)
+                if newScale < maxScale && newScale > 0.5 {
+                    gameCamera.setScale(newScale)
+                }
                 
                 let locationAfterScale = convertPoint(fromView: locationInView)
                 let locationDelta = CGPoint(x: location.x - locationAfterScale.x, y: location.y - locationAfterScale.y)
