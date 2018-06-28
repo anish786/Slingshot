@@ -15,6 +15,7 @@ class GameScene: SKScene {
     
     let gameCamera = GameCamera()
     var panRecognizer = UIPanGestureRecognizer()
+    var pinchRecognizer = UIPinchGestureRecognizer()
     
     override func didMove(to view: SKView) {
         setupLevel()
@@ -25,6 +26,9 @@ class GameScene: SKScene {
         guard let view = view else { return }
         panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(pan))
         view.addGestureRecognizer(panRecognizer)
+        
+        pinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinch))
+        view.addGestureRecognizer(pinchRecognizer)
     }
     
     func setupLevel() {
@@ -50,5 +54,9 @@ extension GameScene {
         let translation = sender.translation(in: view)
         gameCamera.position = CGPoint(x: gameCamera.position.x - translation.x, y: gameCamera.position.y + translation.y)
         sender.setTranslation(CGPoint.zero, in: view)
+    }
+    
+    @objc func pinch(sender: UIPinchGestureRecognizer) {
+        
     }
 }
