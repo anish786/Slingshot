@@ -57,6 +57,22 @@ extension GameScene {
     }
     
     @objc func pinch(sender: UIPinchGestureRecognizer) {
-        
+        guard let view = view else { return }
+        if sender.numberOfTouches == 2 {
+            let locationInView = sender.location(in: view)
+            let location = convertPoint(fromView: locationInView)
+            if sender.state == .changed {
+                let convertedScale = 1/sender.scale
+                let newScale = gameCamera.yScale*convertedScale
+                gameCamera.setScale(newScale)
+                
+                let locationAfterScale = convertPoint(fromView: locationInView)
+                let locationDelta = CGPoint(x: location.x - locationAfterScale.x, y: location.y - locationAfterScale.y)
+                let newPosition = CGPoint(x: gameCamera.position.x + locationDelta.x, y: gameCamera.position.y + locationDelta.y)
+                gameCamera.position = newPosition
+                sender.scale = 1.0
+                gameCamera.setConstraints(with: self, and: mapNode.frame, to: nil)
+            }
+        }
     }
 }
