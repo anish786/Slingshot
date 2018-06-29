@@ -48,6 +48,7 @@ class GameScene: SKScene {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if rock.grabbed {
+            gameCamera.setConstraints(with: self, and: mapNode.frame, to: rock)
             rock.grabbed = false
             rock.flying = true
             constraintToAnchor(active: false)
@@ -75,6 +76,10 @@ class GameScene: SKScene {
         }
         
         addCamera()
+        physicsBody = SKPhysicsBody(edgeLoopFrom: mapNode.frame)
+        physicsBody?.categoryBitMask = PhysicsCategory.edge
+        physicsBody?.contactTestBitMask = PhysicsCategory.rock | PhysicsCategory.block
+        physicsBody?.collisionBitMask = PhysicsCategory.all
         anchor.position = CGPoint(x: mapNode.frame.midX/2, y: mapNode.frame.midY/2)
         addChild(anchor)
         addRock()
