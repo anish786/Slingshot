@@ -15,6 +15,7 @@ enum RockType: String {
 class Rock: SKSpriteNode {
     
     let rockType: RockType
+    var grabbed = false
     
     init(type: RockType) {
         rockType = type

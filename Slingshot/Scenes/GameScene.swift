@@ -26,6 +26,32 @@ class GameScene: SKScene {
         setupGestureRecognizers()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            let location  = touch.location(in: self)
+            if rock.contains(location) {
+                panRecognizer.isEnabled = false
+                rock.grabbed = true
+                rock.position = location
+            }
+        }
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            if rock.grabbed {
+                let location = touch.location(in: self)
+                rock.position = location
+            }
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if rock.grabbed {
+            rock.grabbed = false
+        }
+    }
+    
     func setupGestureRecognizers() {
         guard let view = view else { return }
         panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(pan))
