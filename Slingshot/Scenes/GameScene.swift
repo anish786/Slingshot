@@ -9,6 +9,11 @@
 import SpriteKit
 import GameplayKit
 
+
+enum RoundState {
+    case ready, flying, finished, animating
+}
+
 class GameScene: SKScene {
     
     var mapNode = SKTileMapNode()
@@ -19,7 +24,14 @@ class GameScene: SKScene {
     var maxScale: CGFloat = 0
     
     var rock = Rock(type: .red)
+    var rocks = [
+        Rock(type: .red),
+        Rock(type: .blue),
+        Rock(type: .yellow)
+    ]
     let anchor = SKNode()
+    
+    var roundState = RoundState.ready
     
     override func didMove(to view: SKView) {
         setupLevel()
@@ -27,13 +39,29 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touch = touches.first {
-            let location  = touch.location(in: self)
-            if rock.contains(location) {
-                panRecognizer.isEnabled = false
-                rock.grabbed = true
-                rock.position = location
+        switch roundState {
+        case .ready:
+            if let touch = touches.first {
+                let location  = touch.location(in: self)
+                if rock.contains(location) {
+                    panRecognizer.isEnabled = false
+                    rock.grabbed = true
+                    rock.position = location
+                }
             }
+        case .flying:
+            break
+        case .finished:
+            guard let view = view else { return }
+            roundState = .animating
+            let moveCameraBackAction = SKAction.move(to: CGPoint(x: view.bounds.size.width/2, y: view.bounds.size.height/2), duration: 2.0)
+            moveCameraBackAction.timingMode = .easeInEaseOut
+            gameCamera.run(moveCameraBackAction, completion: {
+                self.panRecognizer.isEnabled = true
+                self.addRock()
+            })
+        case .animating:
+            break
         }
     }
     
@@ -51,6 +79,7 @@ class GameScene: SKScene {
             gameCamera.setConstraints(with: self, and: mapNode.frame, to: rock)
             rock.grabbed = false
             rock.flying = true
+            roundState = .flying
             constraintToAnchor(active: false)
             let dx = anchor.position.x - rock.position.x
             let dy = anchor.position.y - rock.position.y
@@ -96,6 +125,11 @@ class GameScene: SKScene {
     }
     
     func addRock() {
+        if rocks.isEmpty {
+            print("No more rocks")
+            return
+        }
+        rock = rocks.removeFirst()
         rock.physicsBody = SKPhysicsBody(rectangleOf: rock.size)
         rock.physicsBody?.categoryBitMask = PhysicsCategory.rock
         rock.physicsBody?.contactTestBitMask = PhysicsCategory.all
@@ -113,6 +147,15 @@ class GameScene: SKScene {
             rock.constraints = [positionConstraint]
         } else {
             rock.constraints?.removeAll()
+        }
+    }
+    
+    override func didSimulatePhysics() {
+        guard let physicsBody = rock.physicsBody else { return }
+        if roundState == .flying && physicsBody.isResting {
+            gameCamera.setConstraints(with: self, and: mapNode.frame, to: nil)
+            rock.removeFromParent()
+            roundState = .finished
         }
     }
 }
