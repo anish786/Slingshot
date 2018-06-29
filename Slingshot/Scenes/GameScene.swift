@@ -138,6 +138,7 @@ class GameScene: SKScene {
         rock.position = anchor.position
         addChild(rock)
         constraintToAnchor(active: true)
+        roundState = .ready
     }
     
     func constraintToAnchor(active: Bool) {
