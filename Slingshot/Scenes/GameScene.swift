@@ -76,7 +76,9 @@ class GameScene: SKScene {
         }
         
         addCamera()
-        physicsBody = SKPhysicsBody(edgeLoopFrom: mapNode.frame)
+        
+        let physicsRect = CGRect(x: 0, y: mapNode.tileSize.height, width: mapNode.frame.size.width, height: mapNode.frame.size.height - mapNode.tileSize.height)
+        physicsBody = SKPhysicsBody(edgeLoopFrom: physicsRect)
         physicsBody?.categoryBitMask = PhysicsCategory.edge
         physicsBody?.contactTestBitMask = PhysicsCategory.rock | PhysicsCategory.block
         physicsBody?.collisionBitMask = PhysicsCategory.all
