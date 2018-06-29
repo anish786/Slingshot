@@ -16,6 +16,13 @@ class Rock: SKSpriteNode {
     
     let rockType: RockType
     var grabbed = false
+    var flying = false {
+        didSet {
+            if flying {
+                physicsBody?.isDynamic = true
+            }
+        }
+    }
     
     init(type: RockType) {
         rockType = type

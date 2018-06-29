@@ -49,6 +49,13 @@ class GameScene: SKScene {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if rock.grabbed {
             rock.grabbed = false
+            rock.flying = true
+            constraintToAnchor(active: false)
+            let dx = anchor.position.x - rock.position.x
+            let dy = anchor.position.y - rock.position.y
+            let impulse = CGVector(dx: dx, dy: dy)
+            rock.physicsBody?.applyImpulse(impulse)
+            rock.isUserInteractionEnabled = false
         }
     }
     
@@ -82,8 +89,24 @@ class GameScene: SKScene {
     }
     
     func addRock() {
+        rock.physicsBody = SKPhysicsBody(rectangleOf: rock.size)
+        rock.physicsBody?.categoryBitMask = PhysicsCategory.rock
+        rock.physicsBody?.contactTestBitMask = PhysicsCategory.all
+        rock.physicsBody?.collisionBitMask = PhysicsCategory.block | PhysicsCategory.edge
+        rock.physicsBody?.isDynamic = false
         rock.position = anchor.position
         addChild(rock)
+        constraintToAnchor(active: true)
+    }
+    
+    func constraintToAnchor(active: Bool) {
+        if active {
+            let slingRange = SKRange(lowerLimit: 0.0, upperLimit: rock.size.width*3)
+            let positionConstraint = SKConstraint.distance(slingRange, to: anchor)
+            rock.constraints = [positionConstraint]
+        } else {
+            rock.constraints?.removeAll()
+        }
     }
 }
 
