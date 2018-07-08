@@ -183,12 +183,23 @@ extension GameScene: SKPhysicsContactDelegate {
         let mask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
         
         switch mask {
-        case PhysicsCategory.rock | PhysicsCategory.block:
+        //when rock collides with the block, damage it based on the force
+        case PhysicsCategory.rock | PhysicsCategory.block, PhysicsCategory.block | PhysicsCategory.edge:
             if let block = contact.bodyB.node as? Block {
                 block.impact(with: Int(contact.collisionImpulse))
             } else if let block = contact.bodyA.node as? Block {
                 block.impact(with: Int(contact.collisionImpulse))
             }
+        //when block collides with the block
+        case PhysicsCategory.block | PhysicsCategory.block:
+            if let block = contact.bodyA.node as? Block {
+                block.impact(with: Int(contact.collisionImpulse))
+            }
+            if let block = contact.bodyB.node as? Block {
+                block.impact(with: Int(contact.collisionImpulse))
+            }
+        case PhysicsCategory.rock | PhysicsCategory.edge:
+            rock.flying = false
         default:
             break;
         }
