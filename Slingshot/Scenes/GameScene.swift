@@ -106,6 +106,22 @@ class GameScene: SKScene {
         
         addCamera()
         
+        for child in mapNode.children {
+            if let child = child as? SKSpriteNode {
+                guard let name = child.name else { continue }
+                if !["wood", "strone","glass"].contains(name) { continue }
+                guard let type = BlockType(rawValue: name) else { continue }
+                let block = Block(type: type)
+                block.size = child.size
+                block.position = child.position
+                block.color = UIColor.brown
+                block.zPosition = ZPosition.obstacles
+                block.createPhysicsBody()
+                mapNode.addChild(block)
+                child.color = UIColor.clear
+            }
+        }
+        
         let physicsRect = CGRect(x: 0, y: mapNode.tileSize.height, width: mapNode.frame.size.width, height: mapNode.frame.size.height - mapNode.tileSize.height)
         physicsBody = SKPhysicsBody(edgeLoopFrom: physicsRect)
         physicsBody?.categoryBitMask = PhysicsCategory.edge
