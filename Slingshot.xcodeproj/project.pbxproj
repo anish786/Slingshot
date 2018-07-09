@@ -87,6 +87,7 @@
 		6FCC234820E2ED57005830A3 /* Slingshot */ = {
 			isa = PBXGroup;
 			children = (
+				6FCC6CD920F4102700267D18 /* Levels */,
 				6FCC6CD020F4044200267D18 /* Extensions */,
 				6F63D94320E45436007C70D8 /* Custom Nodes */,
 				6FCC236820E2F5B9005830A3 /* TileSets */,
@@ -119,7 +120,6 @@
 		6FCC236620E2F56C005830A3 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				6FCC234B20E2ED57005830A3 /* GameScene_1.sks */,
 				6FCC234F20E2ED57005830A3 /* GameScene.swift */,
 				6FCC6CD320F4062900267D18 /* MenuScene.swift */,
 				6FCC6CD520F4063D00267D18 /* LevelScene.swift */,
@@ -151,6 +151,14 @@
 				6FCC6CD120F4047B00267D18 /* SKNode+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		6FCC6CD920F4102700267D18 /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				6FCC234B20E2ED57005830A3 /* GameScene_1.sks */,
+			);
+			path = Levels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

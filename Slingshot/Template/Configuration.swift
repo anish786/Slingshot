@@ -11,6 +11,8 @@ import CoreGraphics
 struct ZPosition {
     static let background: CGFloat = 0
     static let obstacles: CGFloat = 1
+    static let hudBackGround: CGFloat = 10
+    static let hudLabel: CGFloat = 11
 }
 
 struct PhysicsCategory {
