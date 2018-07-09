@@ -154,6 +154,7 @@ class GameScene: SKScene {
         rock.physicsBody?.isDynamic = false
         rock.position = anchor.position
         addChild(rock)
+        rock.aspectScale(to: mapNode.tileSize, width: false, multiplier: 1.0)
         constraintToAnchor(active: true)
         roundState = .ready
     }
