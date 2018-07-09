@@ -10,4 +10,6 @@ import SpriteKit
 
 class LevelScene: SKScene {
 
+    var sceneManagerDelegate: SceneManagerDelegate?
+    
 }

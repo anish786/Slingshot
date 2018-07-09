@@ -9,5 +9,7 @@
 import SpriteKit
 
 class MenuScene: SKScene {
+    
+    var sceneManagerDelegate: SceneManagerDelegate?
 
 }
