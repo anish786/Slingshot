@@ -26,17 +26,30 @@ class GameScene: SKScene {
     var maxScale: CGFloat = 0
     
     var rock = Rock(type: .red)
-    var rocks = [
-        Rock(type: .red),
-        Rock(type: .blue),
-        Rock(type: .yellow)
-    ]
+    var rocks = [Rock]()
     let anchor = SKNode()
+    
+    var level: Int?
     
     var roundState = RoundState.ready
     
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
+        
+        guard let level = level else {
+            return
+        }
+        
+        guard let levelData = LevelData(level: level) else {
+            return
+        }
+        
+        for rockColor in levelData.rocks {
+            if let newRockType = RockType(rawValue: rockColor) {
+                rocks.append(Rock(type: newRockType))
+            }
+        }
+        
         setupLevel()
         setupGestureRecognizers()
     }
@@ -192,6 +205,12 @@ extension GameScene: SKPhysicsContactDelegate {
                 block.impact(with: Int(contact.collisionImpulse))
             } else if let block = contact.bodyA.node as? Block {
                 block.impact(with: Int(contact.collisionImpulse))
+            }
+            
+            if let rock = contact.bodyA.node as? Rock {
+                rock.flying = false
+            } else if let rock = contact.bodyB.node as? Rock {
+                rock.flying = false
             }
         //when block collides with the block
         case PhysicsCategory.block | PhysicsCategory.block:
