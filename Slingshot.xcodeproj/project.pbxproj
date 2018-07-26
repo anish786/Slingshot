@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6F39150F21063815008F6FA7 /* GameScene_2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6F39150E21063815008F6FA7 /* GameScene_2.sks */; };
+		6F3D9E59210A425000CE70F4 /* AnimationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3D9E58210A425000CE70F4 /* AnimationHelper.swift */; };
 		6F63D94520E45456007C70D8 /* GameCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F63D94420E45456007C70D8 /* GameCamera.swift */; };
 		6F7B67F920E5A4FB00D0C5F4 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7B67F820E5A4FB00D0C5F4 /* Configuration.swift */; };
 		6F7B67FB20E5A89900D0C5F4 /* Rock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7B67FA20E5A89900D0C5F4 /* Rock.swift */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		6F39150E21063815008F6FA7 /* GameScene_2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene_2.sks; sourceTree = "<group>"; };
+		6F3D9E58210A425000CE70F4 /* AnimationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationHelper.swift; sourceTree = "<group>"; };
 		6F63D94420E45456007C70D8 /* GameCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCamera.swift; sourceTree = "<group>"; };
 		6F7B67F820E5A4FB00D0C5F4 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		6F7B67FA20E5A89900D0C5F4 /* Rock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rock.swift; sourceTree = "<group>"; };
@@ -59,6 +61,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F3D9E57210A423600CE70F4 /* Helper Files */ = {
+			isa = PBXGroup;
+			children = (
+				6F3D9E58210A425000CE70F4 /* AnimationHelper.swift */,
+			);
+			path = "Helper Files";
+			sourceTree = "<group>";
+		};
 		6F63D94320E45436007C70D8 /* Custom Nodes */ = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +99,7 @@
 		6FCC234820E2ED57005830A3 /* Slingshot */ = {
 			isa = PBXGroup;
 			children = (
+				6F3D9E57210A423600CE70F4 /* Helper Files */,
 				6FCC6CD920F4102700267D18 /* Levels */,
 				6FCC6CD020F4044200267D18 /* Extensions */,
 				6F63D94320E45436007C70D8 /* Custom Nodes */,
@@ -246,6 +257,7 @@
 				6FCC235020E2ED57005830A3 /* GameScene.swift in Sources */,
 				6F7B67F920E5A4FB00D0C5F4 /* Configuration.swift in Sources */,
 				6FCC235220E2ED57005830A3 /* GameViewController.swift in Sources */,
+				6F3D9E59210A425000CE70F4 /* AnimationHelper.swift in Sources */,
 				6F63D94520E45456007C70D8 /* GameCamera.swift in Sources */,
 				6FCC234A20E2ED57005830A3 /* AppDelegate.swift in Sources */,
 				6FCC6CD620F4063D00267D18 /* LevelScene.swift in Sources */,
